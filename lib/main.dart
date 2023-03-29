@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:robo_ai/theme_data_dark.dart';
 import 'package:robo_ai/theme_data_light.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'constants/constants.dart';
 
 void main() {
@@ -21,16 +20,18 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ChatProvider()),
-        ChangeNotifierProvider(create: (_) => ThemeProvider())
+        ChangeNotifierProvider(create: (_) => ThemeProvider()..initialize())
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'AI Chat',
-        theme: themeDataLight(),
-        darkTheme: themeDataDark(),
-        themeMode: ThemeMode.system,
-        home: const MyHomePage(title: 'Chat AI'),
-      ),
+      child: Builder(builder: (context) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'AI Chat',
+          theme: themeDataLight(),
+          darkTheme: themeDataDark(),
+          themeMode: context.watch<ThemeProvider>().themeMode,
+          home: const MyHomePage(title: 'Chat AI'),
+        );
+      }),
     );
   }
 }
@@ -45,8 +46,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isDarkmode = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,19 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           IconButton(
               onPressed: () {
-                //________________NOT FINISHED YET________________
                 final themeProvider =
                     Provider.of<ThemeProvider>(context, listen: false);
 
-                setState(() {
-                  isDarkmode = !isDarkmode;
-                });
-
-                isDarkmode // call the functions
-                    ? themeProvider.setDarkmode()
-                    : themeProvider.setLightMode();
+                themeProvider.initTheme == 'light'
+                    ? themeProvider.setDarkmode('dark')
+                    : themeProvider.setLightMode('light');
               },
-              icon: Icon(FontAwesomeIcons.solidMoon))
+              icon: const Icon(FontAwesomeIcons.solidMoon))
         ],
       ),
       body: const ChatScreen(),
