@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:robo_ai/theme_data_dark.dart';
 import 'package:robo_ai/theme_data_light.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants/constants.dart';
 
 void main() {
   runApp(const MyApp());
@@ -59,15 +58,22 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
         actions: [
           IconButton(
-              onPressed: () {
-                final themeProvider =
-                    Provider.of<ThemeProvider>(context, listen: false);
+            onPressed: () {
+              final themeProvider =
+                  Provider.of<ThemeProvider>(context, listen: false);
 
-                themeProvider.initTheme == 'light'
-                    ? themeProvider.setDarkmode('dark')
-                    : themeProvider.setLightMode('light');
-              },
-              icon: const Icon(FontAwesomeIcons.solidMoon))
+              themeProvider.initTheme == 'light'
+                  ? themeProvider.setDarkmode('dark')
+                  : themeProvider.setLightMode('light');
+            },
+            icon: Provider.of<ThemeProvider>(context).initTheme == 'light'
+                ? Icon(
+                    FontAwesomeIcons.solidMoon,
+                    color: Theme.of(context).primaryColorDark,
+                  )
+                : Icon(FontAwesomeIcons.sun,
+                    color: Theme.of(context).primaryColorLight),
+          ),
         ],
       ),
       body: const ChatScreen(),

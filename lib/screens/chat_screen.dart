@@ -181,15 +181,13 @@ class _ChatScreenState extends State<ChatScreen> {
       String msg = msgController.text;
       setState(() {
         isTyping = true;
-        //chatList.add(ChatModel(msg: msgController.text, chatIndex: 0));
         chatProvider.addUserMessage(msg: msg);
         msgController.clear();
         focusNode.unfocus();
       });
       log('Message has been sent');
       await chatProvider.sendMessageAndGetAnswers(msg: msg);
-      /*chatList.addAll(
-          await ApiService.sendMessageTest(message: msgController.text));*/
+
       setState(() {});
     } catch (error) {
       log('Error $error');
@@ -197,10 +195,10 @@ class _ChatScreenState extends State<ChatScreen> {
         SnackBar(
           backgroundColor: Colors.red,
           content: Row(
-            children: [
-              const Icon(Icons.error_outline_rounded, color: Colors.white),
-              const SizedBox(width: 5),
-              const Text(
+            children: const [
+              Icon(Icons.error_outline_rounded, color: Colors.white),
+              SizedBox(width: 5),
+              Text(
                 'Something went wrong!',
                 style: TextStyle(color: Colors.white),
               ),

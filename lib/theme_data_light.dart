@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 ThemeData themeDataLight() {
   return ThemeData(
     useMaterial3: true,
+    primaryColorDark: const Color(0xFF444654),
     scaffoldBackgroundColor: Colors.white,
     cardColor: const Color(0xFF444654).withOpacity(0.2),
     dividerColor: Colors.grey.withOpacity(0.6),
