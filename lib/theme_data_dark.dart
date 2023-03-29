@@ -13,6 +13,6 @@ ThemeData themeDataDark() {
         titleLarge: TextStyle(
             color: Colors.white70, fontSize: 24, fontWeight: FontWeight.w600),
         bodyLarge: TextStyle(
-            color: Colors.white70, fontSize: 16, fontWeight: FontWeight.w400)),
+            color: Colors.white70, fontSize: 16, fontWeight: FontWeight.w600)),
   );
 }

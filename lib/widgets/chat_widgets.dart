@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:robo_ai/constants/constants.dart';
 import 'package:robo_ai/widgets/text_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:provider/provider.dart';
 
 class ChatWidgets extends StatelessWidget {
   const ChatWidgets({super.key, required this.msg, required this.chatIndex});
@@ -34,10 +35,18 @@ class ChatWidgets extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   chatIndex == 0
-                      ? Image.asset('assets/images/user.png',
-                          width: 40, height: 40)
-                      : Image.asset('assets/images/bot.png',
-                          width: 40, height: 40),
+                      ? Image.asset(
+                          'assets/images/user.png',
+                          width: 35,
+                          height: 35,
+                          color: Theme.of(context).indicatorColor,
+                        )
+                      : Image.asset(
+                          'assets/images/bot.png',
+                          width: 35,
+                          height: 35,
+                          color: Theme.of(context).indicatorColor,
+                        ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: chatIndex == 0

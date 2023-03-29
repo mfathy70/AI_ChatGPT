@@ -15,6 +15,6 @@ ThemeData themeDataLight() {
             fontSize: 24,
             fontWeight: FontWeight.w600),
         bodyLarge: TextStyle(
-            color: Colors.black, fontSize: 16, fontWeight: FontWeight.w400)),
+            color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600)),
   );
 }
