@@ -8,7 +8,7 @@ ThemeData themeDataDark() {
     cardColor: const Color(0xFF444654),
     dividerColor: Colors.black.withOpacity(0.6),
     highlightColor: const Color(0xFF444654),
-    indicatorColor: Colors.white30,
+    indicatorColor: Colors.white70,
     textTheme: const TextTheme(
         titleLarge: TextStyle(
             color: Colors.white70, fontSize: 24, fontWeight: FontWeight.w600),
