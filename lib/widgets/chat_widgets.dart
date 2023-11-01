@@ -19,16 +19,7 @@ class ChatWidgets extends StatelessWidget {
               ? Theme.of(context).scaffoldBackgroundColor
               : Theme.of(context).cardColor,
           child: Container(
-            decoration: chatIndex == 0
-                ? const BoxDecoration()
-                : BoxDecoration(
-                    border: Border.symmetric(
-                      horizontal: BorderSide(
-                        color: Theme.of(context).dividerColor,
-                        width: 0.6,
-                      ),
-                    ),
-                  ),
+            decoration: const BoxDecoration(),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Row(
